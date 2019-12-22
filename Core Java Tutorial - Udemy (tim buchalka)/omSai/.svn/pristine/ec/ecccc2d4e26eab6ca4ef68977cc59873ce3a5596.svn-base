@@ -1,0 +1,6 @@
+#This is a sample for java properties
+#Tue Oct 02 06:57:19 PDT 2018
+projectName=Om Sai
+backupFolderName=Om_Sai_Auto_Backup
+databaseDrivers=jdbc\:sqlite
+databaseName=autoLoneManager

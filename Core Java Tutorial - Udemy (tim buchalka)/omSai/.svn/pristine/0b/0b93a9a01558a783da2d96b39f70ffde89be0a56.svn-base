@@ -1,0 +1,5 @@
+#This is a sample for java properties
+#Sun Oct 07 05:24:38 PDT 2018
+distinctDates=select distinct date from transactions
+getAllCustomerList=select distinct * from customer
+getAllTransationList=select * from transactions

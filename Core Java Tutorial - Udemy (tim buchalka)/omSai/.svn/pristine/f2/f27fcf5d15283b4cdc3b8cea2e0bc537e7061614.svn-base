@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package common;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import omsai.databaseBackup;
+import omsai.homePage;
+
+/**
+ *
+ * @author Nilesh
+ */
+public class commonFetchData {
+    
+    public static List<Map<String,Object>> getAllCustomerDetails(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getAllCustomerList");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                      
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         rowData.put(metaData.getColumnName(1), rs.getString(1));
+                         rowData.put(metaData.getColumnName(2), rs.getString(2));             
+                         rowData.put(metaData.getColumnName(3), rs.getString(3));
+                         rowData.put(metaData.getColumnName(4), rs.getString(4));
+                         rowData.put(metaData.getColumnName(5), rs.getString(5));
+                         rowData.put(metaData.getColumnName(6), rs.getString(6));
+                         rowData.put(metaData.getColumnName(7), rs.getString(7));
+                         rowData.put(metaData.getColumnName(8), rs.getString(8));
+                         rowData.put(metaData.getColumnName(9), rs.getString(9));
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+            
+}

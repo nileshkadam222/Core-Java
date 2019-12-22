@@ -1,0 +1,309 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package common;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import omsai.databaseBackup;
+import omsai.homePage;
+
+/**
+ *
+ * @author Nilesh
+ */
+public class commonFetchData {
+    
+    public static List<Map<String,Object>> getAllCustomerDetails(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getAllCustomerList");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                      
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         rowData.put(metaData.getColumnName(1), rs.getString(1));
+                         rowData.put(metaData.getColumnName(2), rs.getString(2));             
+                         rowData.put(metaData.getColumnName(3), rs.getString(3));
+                         rowData.put(metaData.getColumnName(4), rs.getString(4));
+                         rowData.put(metaData.getColumnName(5), rs.getString(5));
+                         rowData.put(metaData.getColumnName(6), rs.getString(6));
+                         rowData.put(metaData.getColumnName(7), rs.getString(7));
+                         rowData.put(metaData.getColumnName(8), rs.getString(8));
+                         rowData.put(metaData.getColumnName(9), rs.getString(9));
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    
+    public static List<Map<String,Object>> getAllAPending(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getPendingCustomers");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                       int columCount =  metaData.getColumnCount();
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         for(int i = 1;i <= columCount;i++){
+                              rowData.put(metaData.getColumnName(i), rs.getString(i));
+                         }
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    
+    
+     public static List<Map<String,Object>> getAllTransationDetails(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getAllTransationList");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                      
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         rowData.put(metaData.getColumnName(1), rs.getString(1));
+                         rowData.put(metaData.getColumnName(2), rs.getString(2));             
+                         rowData.put(metaData.getColumnName(3), rs.getString(3));
+                         rowData.put(metaData.getColumnName(4), rs.getString(4));
+                         rowData.put(metaData.getColumnName(5), rs.getString(5));
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    public static List<String> getDatesFromTransation(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<String> rowList = new ArrayList<String>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("distinctDates");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        while(rs.next()){                      
+                         rowList.add(rs.getString(1));
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    
+     public static  Map<String,Object> getUserDetaisById(String customerId) throws IOException{
+         Statement stmt = null;
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    Map<String,Object> rowData = new HashMap<>();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String customerDetailQuery = Qureyproperties.getProperty("getCustomerDetails");
+                        customerDetailQuery = customerDetailQuery + "'"+customerId+"'";
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(customerDetailQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                        int columnCount = metaData.getColumnCount();
+                               
+                         
+                         while(rs.next()){
+                             for(int i=1;i<= columnCount;i++){
+                                  rowData.put(metaData.getColumnName(i), rs.getString(i));
+                             }
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowData;
+    }
+     
+    public static List<Map<String,Object>> getOverallReport(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getOverallReport");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                       int columCount =  metaData.getColumnCount();
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         for(int i = 1;i <= columCount;i++){
+                              rowData.put(metaData.getColumnName(i), rs.getString(i));
+                         }
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    
+    public static List<Map<String,Object>> getExpensesReport(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getExpensesReport");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                       int columCount =  metaData.getColumnCount();
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         for(int i = 1;i <= columCount;i++){
+                              rowData.put(metaData.getColumnName(i), rs.getString(i));
+                         }
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    
+    public static List<Map<String,Object>> getRecoveryReport(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getRecoveryReport");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + "where" + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                       int columCount =  metaData.getColumnCount();
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         for(int i = 1;i <= columCount;i++){
+                              rowData.put(metaData.getColumnName(i), rs.getString(i));
+                         }
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+    
+    public static List<Map<String,Object>> getDailyReport(String whereClause) throws IOException{
+         Statement stmt = null;
+         List<Map<String,Object>> rowList = new ArrayList<Map<String,Object>>();
+         
+            Connection conn = Sqlliteconnection.gerSqlLiteConnection();
+                    try {
+                        Properties Qureyproperties = commonUtility.getQueryProperties();
+                        String allCustomerQuery = Qureyproperties.getProperty("getDailyReport");
+                        if(whereClause != null){
+                            allCustomerQuery = allCustomerQuery + " where " + whereClause;
+                        }
+                        stmt = conn.createStatement();
+                       ResultSet rs = stmt.executeQuery(allCustomerQuery);
+                        ResultSetMetaData metaData = rs.getMetaData();
+                       int columCount =  metaData.getColumnCount();
+                        while(rs.next()){
+                         Map<String,Object> rowData = new HashMap<>();
+                         for(int i = 1;i <= columCount;i++){
+                              rowData.put(metaData.getColumnName(i), rs.getString(i));
+                         }
+                         rowList.add(rowData);
+                       } 
+                 rs.close();
+                 stmt.close();
+                 conn.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(databaseBackup.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        return rowList;
+    }
+            
+}

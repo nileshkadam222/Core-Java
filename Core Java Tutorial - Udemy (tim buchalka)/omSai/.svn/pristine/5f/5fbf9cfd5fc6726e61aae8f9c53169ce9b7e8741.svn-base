@@ -1,0 +1,5 @@
+#This is a sample for java properties
+#Tue Oct 02 01:13:12 PDT 2018
+projectName=Om Sai
+databaseDrivers=jdbc\:sqlite
+databaseName=autoLoneManager

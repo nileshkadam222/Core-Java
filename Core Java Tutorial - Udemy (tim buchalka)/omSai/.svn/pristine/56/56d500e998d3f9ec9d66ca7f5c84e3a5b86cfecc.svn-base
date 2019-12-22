@@ -1,0 +1,13 @@
+#This is a sample for java properties
+#Thu Nov 08 00:00:59 IST 2018
+registerMacAddress=20-68-9D-A5-F0-86
+registerDate=01/11/2018
+loderImage=C\:\\Users\\Nilesh\\Documents\\NetBeansProjects\\omSai\\application\\images\\loader\\loader.gif
+pendingFileName=pendingAllRecords
+backupFolderName=Om_Sai_Auto_Backup
+databaseName=omsai.db
+isLicenseEnable=true
+exportDefaultFolder=D\:
+licenseDays=2
+databaseDrivers=jdbc\:sqlite
+projectName=Om Sai

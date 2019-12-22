@@ -1,0 +1,18 @@
+<<<<<<< .mine
+Nov 17, 2018 7:16:50 PM common.logger log
+WARNING: create a connection to the database
+Nov 17, 2018 7:17:16 PM common.logger log
+WARNING: create a connection to the database
+Nov 17, 2018 7:17:16 PM common.logger log
+WARNING: create a connection to the database
+Nov 17, 2018 7:17:16 PM common.logger log
+=======
+Nov 09, 2018 12:44:24 PM common.logger log
+WARNING: create a connection to the database
+Nov 09, 2018 12:44:28 PM common.logger log
+WARNING: create a connection to the database
+Nov 09, 2018 12:44:33 PM common.logger log
+WARNING: create a connection to the database
+Nov 09, 2018 12:44:34 PM common.logger log
+>>>>>>> .r44
+WARNING: create a connection to the database

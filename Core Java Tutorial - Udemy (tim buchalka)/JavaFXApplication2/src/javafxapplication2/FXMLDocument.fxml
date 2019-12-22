@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0">
+         <children>
+            <Button layoutX="25.0" layoutY="38.0" mnemonicParsing="false" prefHeight="158.0" prefWidth="326.0" text="Button" />
+            <Button layoutX="387.0" layoutY="38.0" mnemonicParsing="false" prefHeight="158.0" prefWidth="326.0" text="Button" />
+            <Button layoutX="771.0" layoutY="38.0" mnemonicParsing="false" prefHeight="158.0" prefWidth="185.0" text="Button" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

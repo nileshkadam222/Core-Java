@@ -1,0 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package common;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Nilesh
+ */
+public class commonUtility {
+    
+    /**
+     *
+     */
+    
+    public static String getApplicationPath(){
+        return System.getenv("applicationPath");
+    }
+    public static Properties getProperties(){
+        Properties prop = new Properties();
+         InputStream in;
+        try {
+            String appPath = getApplicationPath();
+            in = new FileInputStream(appPath+"/application/applicationConfig.properties");
+             prop.load(in);
+             System.out.println(prop.getProperty("applcationPath"));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(commonUtility.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(commonUtility.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        return prop;
+    }
+    
+   
+}

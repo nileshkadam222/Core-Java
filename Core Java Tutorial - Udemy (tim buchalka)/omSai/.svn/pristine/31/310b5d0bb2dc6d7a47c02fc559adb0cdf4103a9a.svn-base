@@ -1,0 +1,9 @@
+#This is a sample for java properties
+#Sun Nov 04 03:22:57 PST 2018
+projectName=Om Sai
+pendingFileName=pendingAllRecords
+backupFolderName=Om_Sai_Auto_Backup
+exportDefaultFolder=D\:
+databaseDrivers=jdbc\:sqlite
+databaseName=omsai.db
+loderImage=C\:\\Users\\Nilesh\\Documents\\NetBeansProjects\\omSai\\application\\images\\loader\\loader.gif
