@@ -1,0 +1,116 @@
+interface check 
+{
+public void message();
+}
+public class imtf
+ {
+   public static void main(String[] args) 
+   {
+  try 
+     {
+       check t = new check()
+       {
+          public void message() 
+	   {
+  	      System.out.println("Method defined in the interface");
+  	    }
+       };
+      t.message();
+     }  
+ catch (Exception ex)
+ {
+  System.out.println("" + ex.getMessage());
+  }
+  }
+  } 
+=================================================================
+
+interface test
+.{
+   public void sayHello();
+}
+public class exm implements test
+{
+  public void sayHello()
+  {
+    System.out.println("Hello Visitor !");
+  }
+   public static void main(String args[])
+   {
+      exm ex = new exm();
+       exm.sayHello();
+  }
+}
+=====================================================================
+
+public interface Shape {
+    public double area();
+}
+
+public class Square implements Shape{
+    private int length = 5;
+    public Square(){...}
+
+    public double area()
+         return length * length;
+    }
+}
+===================================================================== 
+
+public interface IBox
+{
+   public void setSize(int size);
+   public int getSize();
+   public int getArea();
+}
+public class Rectangle implements IBox
+{
+   private int size;
+}
+public static void main(String args[])
+{
+    Ibox myBox=new Ibox();
+}
+public static void main(String args[])
+{
+    Rectangle myBox=new Rectangle();
+}
+====================================================================
+package animals;
+
+interface Animal {
+   public void eat();
+   public void travel();
+}
+package animals;
+
+public class MammalInt implements Animal{
+
+   public void eat(){
+      System.out.println("Mammal eats");
+   }
+
+   public void travel(){
+      System.out.println("Mammal travels");
+   } 
+
+   public int noOfLegs(){
+      return 0;
+   }
+
+   public static void main(String args[]){
+      MammalInt m = new MammalInt();
+      m.eat();
+      m.travel();
+   }
+} 
+===================================================================
+
+
+ 
+
+
+  
+
+
+

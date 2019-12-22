@@ -1,0 +1,27 @@
+import java.io.*;
+class disha7
+{
+   public static void main(String ar[])throws IOException
+   {
+       int s; 
+       float c;
+       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	System.out.println("Enter the sales amount");
+        s=Integer.parseInt(in.readLine());
+        if(s<=5000)
+	 {
+	   c=s*5/100;
+	   System.out.println("The commision is"+c);
+         }
+	else if(s>5000 && s<=10000)
+        {
+            c=s*10/100;
+	   System.out.println("The commision is"+c);
+         }
+	else if(s>10000)
+	 {
+	   c=s*15/100;
+	   System.out.println("The commision is"+c);
+         }
+    }
+}

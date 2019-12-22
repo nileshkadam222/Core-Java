@@ -1,0 +1,17 @@
+import java io*;
+class swap
+{
+public static void main(String ar[]))throws IOException
+{
+int a,b;
+BufferedReadrer in=new BufferedReader(new InputSteamReader(System.in));
+system.out.println(Enter the first number);
+a=Integer.parseln(in.readLine);
+system.out.println(Enter the second number);
+b=Integer.parseln(in.readLine);
+a=a+b;
+b=a-b;
+a=a-b;
+system.out.println("after swappiing  value"+a);
+}
+}

@@ -1,0 +1,20 @@
+import java.io.*;
+class arr
+{
+public static void main(String ar[])throws Exception
+{
+  int[] a=new int[7];
+  int i; 
+  BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+  System.out.println("enter array elements");
+  for(i=0;i<7;i++)
+  {
+        a[i]=Integer.parseInt(in.readLine());
+   }
+    System.out.println("Arrat elements are");
+   for(i=0;i<=6;i++)
+  {
+         System.out.println(+a[i]);
+   }
+}
+}

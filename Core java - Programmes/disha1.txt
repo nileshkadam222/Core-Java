@@ -1,0 +1,15 @@
+import java.io*;
+class disha1
+{
+public static void main(Sring ar[])throws IOException
+{
+  int a,b,c=0;
+BufferedReader in=new BufferedReader(new InputStreamReader(system.in));
+System.out.println(Enter the first nnumber);
+a=Integer.parseln(in.readLine());
+System.out.println(Enter the second nnumber);
+b=Integer.parseln(in.readLine());
+c=a+b;
+System.out.println(the sum is"+c);
+}
+}
