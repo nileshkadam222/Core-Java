@@ -1,0 +1,9 @@
+//FILE SEARCH ENGINE DATABASE DETAILS
+
+create database sri;//database creation..
+
+use sri;//altering of database
+
+create table register(nm varchar(25),uid varchar(30) primary key,gen varchar(30),pass varchar(30),eid varchar(40));//register table is used for entering register user details in to database
+
+create table file(filename varchar(200) primary key);//file table is used for entering file name details in to database

@@ -1,0 +1,31 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css">
+<script type="text/javascript">
+function fd()
+{
+var s=document.f.f1.value;
+if(s=="")
+{
+alert("filepath should be specified");
+return false;
+}
+return true;
+}
+</script><center>
+<table width=95% height=2% border=0 cellspacing=0>
+<tr>
+<td bgcolor="#E65959" width=100% height=2%></td>
+</tr>
+</table>
+</head>  
+ <body bgcolor="#56b4c9">
+ <form  ENCTYPE="multipart/form-data" action="upload.jsp" method=post name=f onSubmit="return fd()"><br><br><br>
+          <center>
+                    			<b>Choose the file To Upload:</b><br><br></center>
+			<center>
+                			<input name=f1 type=file ><br>
+</center><br><center><input type="submit" value="Upload" class="button2"></center>
+          </form>
+</body>
+</html>

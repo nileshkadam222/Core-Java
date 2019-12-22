@@ -1,0 +1,26 @@
+this is eclipse project so you can run in eclipse software. 
+
+req:
+	1: java JDK
+	2: Eclipse softare
+	3: tomact7
+ 
+
+open eclipse software
+
+then go to file>import>
+
+then click on "General" then select "Existing project into workspace"
+
+then browse file select "ad" folder.
+
+then click on finish button.
+
+
+now you see left side "project explore" in "ad" project.
+
+right click on "ad" and select Run as>Run as Server.
+
+enjoy...!!
+
+if any problem then call me my name is amit my number is 7600898210;   
